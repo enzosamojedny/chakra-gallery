@@ -21,7 +21,6 @@ function Gallery({ images }) {
       </div>
     );
   }
-  console.log(renderedImages);
   return (
     <Grid
       margin='20px'
