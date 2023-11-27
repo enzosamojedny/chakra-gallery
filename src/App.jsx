@@ -9,14 +9,14 @@ const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
 function App() {
   const [images, setImages] = useState([]);
   const [term, setTerm] = useState("");
+  const fetchImages = async () => {
+    const response = await axios.get(
+      `https://api.unsplash.com/photos/random?count=10&client_id=${accessKey}`
+    );
+    const imageUrls = response.data.map((image) => image.urls.regular);
+    setImages(imageUrls);
+  };
   useEffect(() => {
-    const fetchImages = async () => {
-      const response = await axios.get(
-        `https://api.unsplash.com/photos/random?count=10&client_id=${accessKey}`
-      );
-      const imageUrls = response.data.map((image) => image.urls.regular);
-      setImages(imageUrls);
-    };
     fetchImages();
   }, []);
 
@@ -47,7 +47,11 @@ function App() {
 
   return (
     <ChakraProvider>
-      <Navbar setTerm={setTerm} searchImages={searchImages} />
+      <Navbar
+        setTerm={setTerm}
+        searchImages={searchImages}
+        fetchImages={fetchImages}
+      />
       <Routes>
         <Route path='/' element={<Gallery images={images} />} />
         <Route path='/new-window' element={<div>New Window</div>} />
