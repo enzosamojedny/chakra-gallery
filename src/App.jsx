@@ -5,7 +5,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
-
+const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
 function App() {
   const [images, setImages] = useState([]);
   const [term, setTerm] = useState("");
@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     const fetchImages = async () => {
       const response = await axios.get(
-        "https://api.unsplash.com/photos/random?count=5&client_id=93dnPHHdnQvZmZTRVtg9xTlo3necfAvfZiZJ8Tv286w"
+        `https://api.unsplash.com/photos/random?count=5&client_id=${accessKey}`
       );
       const imageUrls = response.data.map((image) => image.urls.regular);
       setImages(imageUrls);
@@ -31,7 +31,7 @@ function App() {
     try {
       setTerm(searchTerm);
       const response = await axios.get(
-        `https://api.unsplash.com/search/photos?query=${searchTerm}&count=5&client_id=93dnPHHdnQvZmZTRVtg9xTlo3necfAvfZiZJ8Tv286w`
+        `https://api.unsplash.com/search/photos?query=${searchTerm}&count=5&client_id=${accessKey}`
       );
       const imageMatches = response.data.results.filter(
         (image) =>

@@ -43,7 +43,10 @@ function Gallery({ images }) {
                 onError={(error, info) => {
                   console.error("Logging to service: ", error, info);
                 }}>
-                <Image src={image}></Image>
+                <Image
+                  src={image}
+                  fallback={<Skeleton height='100%' width='100%' />}
+                />
               </ErrorBoundary>
             </GridItem>
           ))}
