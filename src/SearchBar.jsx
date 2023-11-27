@@ -13,6 +13,9 @@ function SearchBar({ searchImages }) {
   const debouncedSearchImages = debounce(searchImages, 1000);
 
   const onSubmit = () => {
+    if (find === "") {
+      <div>Search cannot be empty</div>;
+    }
     debouncedSearchImages(find);
   };
 
@@ -27,6 +30,9 @@ function SearchBar({ searchImages }) {
           onChange={onInputChange}
         />
         <Button onClick={onSubmit}>Submit</Button>
+        <Button onClick={onSubmit} marginLeft={"10px"}>
+          Randomize
+        </Button>
       </Center>
     </Box>
   );

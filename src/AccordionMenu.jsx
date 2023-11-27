@@ -2,8 +2,9 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,
+  Box,
   IconButton,
+  Link,
 } from "@chakra-ui/react";
 import { HamburgerIcon, AddIcon } from "@chakra-ui/icons";
 //eslint-disable-next-line
@@ -19,14 +20,11 @@ function AccordionMenu() {
           margin='10px'
         />
         <MenuList>
-          <MenuItem icon={<AddIcon />}>
-            <a
-              href='https://www.linkedin.com/in/enzosamojedny/'
-              target='_blank'
-              rel='noopener noreferrer'>
+          <Box as='span' icon={<AddIcon />}>
+            <Link href='https://www.linkedin.com/in/enzosamojedny/' isExternal>
               About Me
-            </a>
-          </MenuItem>
+            </Link>
+          </Box>
         </MenuList>
       </Menu>
     </div>

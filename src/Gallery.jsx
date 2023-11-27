@@ -24,13 +24,13 @@ function Gallery({ images }) {
   }
   return (
     <Grid
-      margin='20px'
+      margin='30px'
       h='200px'
       templateRows='repeat(1, 1fr)'
-      templateColumns='repeat(5, 1fr)'
-      gap={4}>
+      templateColumns='repeat(3, 1fr)'
+      gap={6}>
       {loading
-        ? Array(5)
+        ? Array(10)
             .fill()
             .map((_, index) => (
               <Skeleton key={index} height='100%' width='100%'>
@@ -46,7 +46,7 @@ function Gallery({ images }) {
                 }}>
                 <motion.div
                   whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.2 }}>
+                  transition={{ duration: 0.9 }}>
                   <Image
                     src={image}
                     fallback={<Skeleton height='100%' width='100%' />}

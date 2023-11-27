@@ -9,11 +9,10 @@ const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
 function App() {
   const [images, setImages] = useState([]);
   const [term, setTerm] = useState("");
-
   useEffect(() => {
     const fetchImages = async () => {
       const response = await axios.get(
-        `https://api.unsplash.com/photos/random?count=5&client_id=${accessKey}`
+        `https://api.unsplash.com/photos/random?count=10&client_id=${accessKey}`
       );
       const imageUrls = response.data.map((image) => image.urls.regular);
       setImages(imageUrls);
