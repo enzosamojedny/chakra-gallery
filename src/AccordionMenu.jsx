@@ -6,7 +6,6 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { HamburgerIcon, AddIcon } from "@chakra-ui/icons";
-import { NavLink } from "react-router-dom";
 //eslint-disable-next-line
 function AccordionMenu() {
   return (
@@ -20,11 +19,14 @@ function AccordionMenu() {
           margin='10px'
         />
         <MenuList>
-          <NavLink to='/new-tab'>
-            <MenuItem icon={<AddIcon />} command='⌘T'>
-              New Tab
-            </MenuItem>
-          </NavLink>
+          <MenuItem icon={<AddIcon />}>
+            <a
+              href='https://www.linkedin.com/in/enzosamojedny/'
+              target='_blank'
+              rel='noopener noreferrer'>
+              About Me
+            </a>
+          </MenuItem>
         </MenuList>
       </Menu>
     </div>

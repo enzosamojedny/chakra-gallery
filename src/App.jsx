@@ -35,8 +35,10 @@ function App() {
       );
       const imageMatches = response.data.results.filter(
         (image) =>
-          (image.description || image.alt_description) &&
-          image.description?.includes(searchTerm)
+          (image.description && image.description.includes(searchTerm)) ||
+          (image.alt_description &&
+            image.alt_description.includes(searchTerm)) ||
+          (image.slug && image.slug.includes(searchTerm))
       );
       setImages(imageMatches.map((img) => img.urls.regular));
     } catch (error) {
