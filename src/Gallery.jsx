@@ -2,6 +2,7 @@ import { Grid, GridItem, Skeleton } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Image } from "@chakra-ui/react";
 import { ErrorBoundary } from "react-error-boundary";
+import { motion } from "framer-motion";
 //eslint-disable-next-line
 function Gallery({ images }) {
   const [renderedImages, setRenderedImages] = useState([]);
@@ -43,10 +44,14 @@ function Gallery({ images }) {
                 onError={(error, info) => {
                   console.error("Logging to service: ", error, info);
                 }}>
-                <Image
-                  src={image}
-                  fallback={<Skeleton height='100%' width='100%' />}
-                />
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.2 }}>
+                  <Image
+                    src={image}
+                    fallback={<Skeleton height='100%' width='100%' />}
+                  />
+                </motion.div>
               </ErrorBoundary>
             </GridItem>
           ))}
