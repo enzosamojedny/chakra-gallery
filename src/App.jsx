@@ -32,12 +32,16 @@ function App() {
       const response = await axios.get(
         `https://api.unsplash.com/search/photos?query=${searchTerm}&count=5&client_id=${accessKey}`
       );
+      const lowerCaseSearchTerm = searchTerm.toLowerCase();
       const imageMatches = response.data.results.filter(
         (image) =>
-          (image.description && image.description.includes(searchTerm)) ||
+          (image.description &&
+            image.description.toLowerCase().includes(lowerCaseSearchTerm)) ||
           (image.alt_description &&
-            image.alt_description.includes(searchTerm)) ||
-          (image.slug && image.slug.includes(searchTerm))
+            image.alt_description
+              .toLowerCase()
+              .includes(lowerCaseSearchTerm)) ||
+          (image.slug && image.slug.toLowerCase().includes(lowerCaseSearchTerm))
       );
       setImages(imageMatches.map((img) => img.urls.regular));
     } catch (error) {
